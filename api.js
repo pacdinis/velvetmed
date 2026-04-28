@@ -60,3 +60,21 @@ const API = (() => {
     }
   };
 })();
+
+// Expor get e post para uso directo nos módulos
+API.get  = async function(params) {
+  const qs = new URLSearchParams(params).toString();
+  const res = await fetch((window.APPS_SCRIPT_URL || 'APPS_SCRIPT_URL_AQUI') + '?' + qs, { method: 'GET', redirect: 'follow' });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+};
+API.post = async function(body) {
+  const fd = new URLSearchParams();
+  fd.append('payload', JSON.stringify(body));
+  const res = await fetch(window.APPS_SCRIPT_URL || 'APPS_SCRIPT_URL_AQUI', {
+    method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: fd.toString(), redirect: 'follow'
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+};
