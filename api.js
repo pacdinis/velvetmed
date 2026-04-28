@@ -1,11 +1,13 @@
 // ============================================================
 // api.js — Chamadas ao backend (Google Apps Script)
 // VelvetMed Angola App
+//
+// POST usa application/x-www-form-urlencoded com campo "payload"
+// para evitar preflight CORS que o Apps Script não suporta.
 // ============================================================
 
 const API = (() => {
 
-  // URL do Apps Script — substituir após deploy
   const BASE_URL = window.APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycby7bsrX5_wcEJW6Eh6PHhonVDY0atAL9vlawmdQMR9oLsRkR6g-jaJLeFW-HmPvfYMa/exec';
 
   async function get(params) {
@@ -19,49 +21,40 @@ const API = (() => {
   }
 
   async function post(body) {
+    const fd = new URLSearchParams();
+    fd.append('payload', JSON.stringify(body));
     const res = await fetch(BASE_URL, {
       method: 'POST',
-      redirect: 'follow',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: fd.toString(),
+      redirect: 'follow'
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   }
 
   return {
-
-    // ── Auth ──────────────────────────────────────────────
     async login(id_delegado, pin) {
       return post({ action: 'login', id_delegado, pin });
     },
-
     async logout(token) {
       return post({ action: 'logout', token });
     },
-
     async checkSession(token) {
       return get({ action: 'check_session', token });
     },
-
-    // ── Dados de referência ───────────────────────────────
     async getData(token) {
       return get({ action: 'get_data', token });
     },
-
     async getCounters(token) {
       return get({ action: 'get_counters', token });
     },
-
-    // ── Ponto ─────────────────────────────────────────────
     async pontoMarcar(token, tipo, lat, lng) {
       return post({ action: 'ponto_marcar', token, tipo, lat, lng });
     },
-
     async pontoEstado(token) {
       return get({ action: 'ponto_estado', token });
     },
-
     async pontoDia(token, data) {
       return get({ action: 'ponto_dia', token, data });
     }
