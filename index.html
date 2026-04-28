@@ -9,56 +9,40 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="VelvetMed">
   <title>VelvetMed Angola</title>
-
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
-
-  <!-- Leaflet (mapa) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-
-  <!-- App styles -->
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="app.css">
 </head>
 <body>
-
-  <!-- Ponto de entrada da app -->
   <div id="app"></div>
 
-  <!-- Scripts — ordem importa -->
   <script>
-    // URL do Apps Script — alterar após deploy
-    // Pode ser sobrescrito via ?url=... para testes
     const params = new URLSearchParams(location.search);
     window.APPS_SCRIPT_URL = params.get('url') || 'https://script.google.com/macros/s/AKfycby7bsrX5_wcEJW6Eh6PHhonVDY0atAL9vlawmdQMR9oLsRkR6g-jaJLeFW-HmPvfYMa/exec';
   </script>
 
-  <script src="js/utils.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/sync.js"></script>
-  <script src="js/gps.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/ponto.js"></script>
-
-  <!-- Leaflet (mapa) — carregado antes de mapa.js -->
+  <script src="utils.js"></script>
+  <script src="store.js"></script>
+  <script src="api.js"></script>
+  <script src="sync.js"></script>
+  <script src="gps.js"></script>
+  <script src="auth.js"></script>
+  <script src="app.js"></script>
+  <script src="ponto.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/mapa.js"></script>
+  <script src="mapa.js"></script>
 
   <script>
-    // Registar Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
           .catch(err => console.warn('SW não registado:', err));
       });
     }
-
-    // Iniciar app
     window.addEventListener('DOMContentLoaded', () => {
       Auth.init();
     });
   </script>
-
 </body>
 </html>
