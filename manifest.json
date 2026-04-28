@@ -2,7 +2,7 @@
   "name": "VelvetMed Angola",
   "short_name": "VelvetMed",
   "description": "App de gestão de delegados VelvetMed Angola",
-  "start_url": "/",
+  "start_url": "/velvetmed/",
   "display": "standalone",
   "background_color": "#1F4E79",
   "theme_color": "#1F4E79",
