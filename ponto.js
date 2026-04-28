@@ -150,7 +150,7 @@ const Ponto = (() => {
        `<div class="ponto-item">
   <span class="ponto-item__tipo">▶ ${r.HORA_ENTRADA ? String(r.HORA_ENTRADA).substring(0,5) : '—'} → ${r.HORA_SAIDA ? String(r.HORA_SAIDA).substring(0,5) : 'em curso'}</span>
   ${r.DURACAO_MINUTOS ? `<span class="ponto-item__dur">${Utils.formatDuracao(r.DURACAO_MINUTOS)}</span>` : ''}
-</div>`.join('');
+</div>` .join('');
     } catch(e) {
       lista.innerHTML = '<p class="empty-state">Sem ligação</p>';
     }
