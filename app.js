@@ -87,8 +87,8 @@ const App = (() => {
     const items = [
       { icon: '⏱', label: 'Ponto',          action: 'Ponto.render()' },
       { icon: '🗺', label: 'Mapa',           action: 'Mapa.render()' },
-      { icon: '💊', label: 'Visita Farmácia',action: 'App.modulo("visita-farmacia")' },
-      { icon: '➕', label: 'Criar Farmácia', action: 'App.modulo("criar-farmacia")' },
+      { icon: '💊', label: 'Visita Farmácia',action: 'VisitaFarmacia.render()' },
+      { icon: '➕', label: 'Criar Farmácia', action: 'CriarFarmacia.render()' },
       { icon: '🏥', label: 'Visita Clínica', action: 'App.modulo("visita-clinica")' },
       { icon: '🏗',  label: 'Criar Clínica',  action: 'App.modulo("criar-clinica")' },
       { icon: '👨‍⚕️', label: 'Criar Médico',  action: 'App.modulo("criar-medico")' },
