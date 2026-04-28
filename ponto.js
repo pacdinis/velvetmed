@@ -147,11 +147,10 @@ const Ponto = (() => {
         return;
       }
       lista.innerHTML = res.registos.map(r => `
-        <div class="ponto-item ponto-item--${String(r.TIPO).toLowerCase()}">
-          <span class="ponto-item__tipo">${r.TIPO === 'ENTRADA' ? '▶' : '◼'} ${r.TIPO}</span>
-          <span class="ponto-item__hora">${r.HORA_ENTRADA ? String(r.HORA_ENTRADA).substring(0,5) : '—'}</span>
-          ${r.DURACAO_MIN ? `<span class="ponto-item__dur">${Utils.formatDuracao(r.DURACAO_MIN)}</span>` : ''}
-        </div>`).join('');
+       `<div class="ponto-item">
+  <span class="ponto-item__tipo">▶ ${r.HORA_ENTRADA ? String(r.HORA_ENTRADA).substring(0,5) : '—'} → ${r.HORA_SAIDA ? String(r.HORA_SAIDA).substring(0,5) : 'em curso'}</span>
+  ${r.DURACAO_MINUTOS ? `<span class="ponto-item__dur">${Utils.formatDuracao(r.DURACAO_MINUTOS)}</span>` : ''}
+</div>`.join('');
     } catch(e) {
       lista.innerHTML = '<p class="empty-state">Sem ligação</p>';
     }
