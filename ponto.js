@@ -51,7 +51,7 @@ const Ponto = (() => {
         <span class="ponto-status__icon">${aberta ? '🟢' : '🔴'}</span>
         <span class="ponto-status__text">
           ${aberta
-            ? `Em serviço desde ${entrada ? entrada.HORA : '—'}`
+            ? `Em serviço desde ${entrada ? entrada.HORA_ENTRADA : '—'}`
             : 'Fora de serviço'}
         </span>
       </div>
@@ -149,7 +149,7 @@ const Ponto = (() => {
       lista.innerHTML = res.registos.map(r => `
         <div class="ponto-item ponto-item--${String(r.TIPO).toLowerCase()}">
           <span class="ponto-item__tipo">${r.TIPO === 'ENTRADA' ? '▶' : '◼'} ${r.TIPO}</span>
-          <span class="ponto-item__hora">${r.HORA ? String(r.HORA).substring(0,5) : '—'}</span>
+          <span class="ponto-item__hora">${r.HORA_ENTRADA ? String(r.HORA_ENTRADA).substring(0,5) : '—'}</span>
           ${r.DURACAO_MIN ? `<span class="ponto-item__dur">${Utils.formatDuracao(r.DURACAO_MIN)}</span>` : ''}
         </div>`).join('');
     } catch(e) {
