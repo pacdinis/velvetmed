@@ -492,3 +492,91 @@ html, body {
 .loading-msg { color: #fff; font-size: 15px; font-weight: 500; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Check-in box ─────────────────────────────────────────── */
+.ci-box {
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1.5px solid var(--border);
+}
+.ci-box--wait { border-color: var(--accent);  background: #FFF8E8; }
+.ci-box--ok   { border-color: var(--success); background: #E8F5EE; }
+.ci-box--err  { border-color: var(--danger);  background: #FEE8E8; }
+.ci-box--warn { border-color: var(--warning); background: #FFF3E0; }
+
+.ci-box__title { font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+.ci-box__row   { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.ci-box__lbl   { font-size: 12px; color: var(--text-muted); }
+.ci-box__val   { font-size: 13px; font-weight: 600; }
+
+/* ── GPS badges ───────────────────────────────────────────── */
+.gps-badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+.gps-badge--ok   { background: #D1FAE5; color: #065F46; }
+.gps-badge--warn { background: #FEF3C7; color: #92400E; }
+.gps-badge--err  { background: #FEE2E2; color: #991B1B; }
+
+/* ── Chips multi-select ───────────────────────────────────── */
+.chips-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+
+.chip {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.chip--selected {
+  background: var(--brand-light);
+  border-color: var(--brand-mid);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+/* ── Toggle buttons ───────────────────────────────────────── */
+.toggle-group { display: flex; gap: 8px; }
+
+.toggle-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .15s;
+}
+.toggle-btn--active {
+  background: var(--brand-light);
+  border-color: var(--brand-mid);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+/* ── List items ───────────────────────────────────────────── */
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.list-item:active { background: var(--brand-light); }
+.list-item__icon  { font-size: 24px; flex-shrink: 0; }
+.list-item__info  { flex: 1; min-width: 0; }
+.list-item__name  { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.list-item__sub   { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.list-item__arrow { color: var(--text-muted); font-size: 20px; flex-shrink: 0; }
