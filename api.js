@@ -6,7 +6,7 @@
 const API = (() => {
 
   // URL do Apps Script — substituir após deploy
-  const BASE_URL = window.APPS_SCRIPT_URL || 'APPS_SCRIPT_URL_AQUI';
+  const BASE_URL = window.APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycby7bsrX5_wcEJW6Eh6PHhonVDY0atAL9vlawmdQMR9oLsRkR6g-jaJLeFW-HmPvfYMa/exec';
 
   async function get(params) {
     const qs = new URLSearchParams(params).toString();
